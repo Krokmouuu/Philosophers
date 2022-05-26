@@ -6,7 +6,7 @@
 #    By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 12:39:07 by bleroy            #+#    #+#              #
-#    Updated: 2022/05/24 15:50:32 by bleroy           ###   ########.fr        #
+#    Updated: 2022/05/26 19:09:32 by bleroy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra -g -fsanitize=address
+CFLAGS = -Werror -Wall -Wextra
 
 RM = rm -f
 

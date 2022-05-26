@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:12:57 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/26 16:25:09 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/26 19:14:52 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,31 @@ int	parsing(int argc, char **argv, t_all *philo)
 	return (1);
 }
 
+void init_parse(t_parsing *p)
+{
+	pthread_mutex_init(&p->finish, NULL);
+	pthread_mutex_init(&p->print, NULL);
+	pthread_mutex_init(&p->actual_time_m, NULL);
+	p->dead = 0;
+	p->time = actual_time();
+}
+
 int	main(int argc, char **argv)
 {
 	t_all philo;
+	t_parsing p;
 
 	if	(argc < 5 || argc > 6)
 		return (printf("Wrong args\n"));
 	if	(parsing(argc, argv, &philo) == 0 || parsing2(argc, &philo) == 0)
 		return (0);
+	pthread_mutex_init(&philo.parse.finish, NULL);
 	philo.phil = malloc(sizeof(t_philo) * philo.parse.nb_philo);
 	if (!philo.phil)
 		return (printf("Error\n"));
-	startphilo(&philo);
-	
+	init_parse(&p);
+	init(&philo);
+	createphilo(&philo);
+	pthread_mutex_lock(&philo.parse.finish);
+	pthread_mutex_lock(&philo.parse.finish);
 }
