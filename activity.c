@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:47:31 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/26 19:17:50 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/26 20:23:08 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@
 // 	think(philo);
 // }
 
-void think(t_philo *philo)
+void	think(t_philo *philo)
 {
 	pthread_mutex_unlock(&philo->left);
 	pthread_mutex_unlock(philo->right);
 	print(actual_time() - philo->parse->time, philo->id, SLEEP);
-	ft_usleep(philo->parse->time_sleep);
+	ft_usleep(philo->parse->time_sleep + actual_time());
 	print(actual_time() - philo->parse->time, philo->id, THINK);
 }
 
-void activity(t_philo *philo)
+void	activity(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->left);
 	print(actual_time() - philo->parse->time, philo->id, FORK);
@@ -75,6 +75,5 @@ void activity(t_philo *philo)
 	philo->last_meal = actual_time();
 	pthread_mutex_unlock(&philo->last_meal_m);
 	pthread_mutex_unlock(&philo->parse->actual_time_m);
-	ft_usleep(philo->parse->time_eat);
+	ft_usleep(philo->last_meal + philo->parse->time_eat);
 }
-

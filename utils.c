@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:40:15 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/26 15:33:37 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/26 20:24:20 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,8 @@ long int	actual_time(void)
 
 void	ft_usleep(long int time_in_ms)
 {
-	long int	start_time;
-
-	start_time = 0;
-	start_time = actual_time();
-	while ((actual_time() - start_time) < time_in_ms)
-		usleep(time_in_ms / 10);
+	while (actual_time() <= time_in_ms)
+		usleep(100);
 }
 
 void	print(long int ms, int id, char *str)

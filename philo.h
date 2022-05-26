@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:39:51 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/26 19:11:59 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/26 20:23:28 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_philo
 	pthread_t		philo;
 	pthread_mutex_t	*right;
 	pthread_mutex_t	left;
-	pthread_mutex_t	time_eat; // inutlie
 	pthread_mutex_t	last_meal_m;
 	pthread_mutex_t	time_die_m;
 	int				nb_eat;
@@ -62,10 +61,9 @@ typedef struct s_all
 }	t_all;
 
 int			startphilo(t_all *philo);
-int	 		createphilo(t_all *philo);
+int			createphilo(t_all *philo);
 void		activity(t_philo *philo);
 void		think(t_philo *philo);
-void		init(t_all *philo);
 
 //* **************** Utils ****************
 int			ft_atoi(const char *str);
