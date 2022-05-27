@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:39:51 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/26 20:23:28 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/27 15:08:35 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_parsing
 	int					philo_eat;
 	long int			time;
 	int					dead;
+	int					deadid;
 	pthread_mutex_t		finish;
 	pthread_mutex_t		actual_time_m;
 	pthread_mutex_t		print;
@@ -64,6 +65,11 @@ int			startphilo(t_all *philo);
 int			createphilo(t_all *philo);
 void		activity(t_philo *philo);
 void		think(t_philo *philo);
+
+//* **************** Parsing ****************
+int			parsing(int argc, char **argv, t_all *philo);
+int			parsing2(int argc, t_all *philo);
+void		parseattrib(t_all *philo, int argc, char **argv);
 
 //* **************** Utils ****************
 int			ft_atoi(const char *str);

@@ -6,7 +6,7 @@
 #    By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/23 12:39:07 by bleroy            #+#    #+#              #
-#    Updated: 2022/05/26 20:32:13 by bleroy           ###   ########.fr        #
+#    Updated: 2022/05/27 15:07:54 by bleroy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS = philosophers.c \
 	   utils.c \
 	   threads.c \
 	   activity.c \
+	   parsing.c \
 	   
 
 OBJS = ${SRCS:.c=.o}
@@ -23,7 +24,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra -Ofast -g -fsanitize=thread
+CFLAGS = -Werror -Wall -Wextra -Ofast
 
 RM = rm -f
 
