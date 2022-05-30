@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:39:51 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/27 15:08:35 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/30 11:33:27 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_parsing
 	long int			time;
 	int					dead;
 	int					deadid;
+	pthread_mutex_t		death_m;
 	pthread_mutex_t		finish;
 	pthread_mutex_t		actual_time_m;
 	pthread_mutex_t		print;

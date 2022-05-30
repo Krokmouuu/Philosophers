@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:47:31 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/27 14:43:12 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/28 14:48:42 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@ void	activity(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(&philo->left);
-	pthread_mutex_lock(&philo->parse->print);
 	print(actual_time() - philo->parse->time, philo->id, FORK);
 	pthread_mutex_lock(philo->right);
 	print(actual_time() - philo->parse->time, philo->id, FORK);
 	print(actual_time() - philo->parse->time, philo->id, EAT);
-	pthread_mutex_lock(&philo->parse->actual_time_m);
 	pthread_mutex_lock(&philo->last_meal_m);
+	pthread_mutex_lock(&philo->parse->actual_time_m);
 	philo->last_meal = actual_time();
 	pthread_mutex_unlock(&philo->last_meal_m);
 	pthread_mutex_unlock(&philo->parse->actual_time_m);

@@ -6,7 +6,7 @@
 /*   By: bleroy <bleroy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:12:57 by bleroy            #+#    #+#             */
-/*   Updated: 2022/05/27 15:37:44 by bleroy           ###   ########.fr       */
+/*   Updated: 2022/05/30 11:43:36 by bleroy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ void	last_print(t_all *philo)
 {
 	if (philo->parse.dead == 1)
 	{
-		sleep (1);
 		pthread_mutex_lock(&philo->parse.print);
 		printf("%d philosophers ate %d times(s)\n",
 			philo->parse.nb_philo, philo->parse.nb_eat);
 	}
-	if (philo->parse.dead == 2)
+	if (philo->parse.dead == 2 && philo->parse.deadid != 0)
 	{
-		sleep (1);
+		ft_usleep(1500);
 		pthread_mutex_lock(&philo->parse.print);
 		print(actual_time() - philo->parse.time, philo->parse.deadid, DIED);
 	}
@@ -56,7 +55,9 @@ void	init_parse(t_parsing *p)
 {
 	pthread_mutex_init(&p->finish, NULL);
 	pthread_mutex_init(&p->print, NULL);
+	pthread_mutex_init(&p->death_m, NULL);
 	pthread_mutex_init(&p->actual_time_m, NULL);
+	p->deadid = 0;
 	p->dead = 0;
 	p->time = actual_time();
 }
@@ -77,6 +78,7 @@ int	main(int argc, char **argv)
 	init_parse(&p);
 	init(&philo);
 	createphilo(&philo);
+	pthread_mutex_lock(&philo.parse.print);
 	last_print(&philo);
 	return (0);
 }
